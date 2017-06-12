@@ -30,7 +30,7 @@ var line1 = d3.line()
     .x(function(d) { return x(parseTime2(d.date)); })
     .y(function(d) { return y1(+d["level-chained"]); });
 
-d3.json("{{ site.baseurl }}/data/sp500_history.json", function(error, data) {
+d3.json("{{ include.baseurl }}/data/sp500_history.json", function(error, data) {
   if (error) throw error;
 
   x.domain([parseTime2("1930"), d3.max(data, function(d) { return parseTime(d.Date); })]);
@@ -64,7 +64,7 @@ d3.json("{{ site.baseurl }}/data/sp500_history.json", function(error, data) {
       .attr("stroke-width", 1.5)
       .attr("d", line0);
 
-  d3.json("{{ site.baseurl }}/data/gdp_history.json", function(error, data2) {
+  d3.json("{{ include.baseurl }}/data/gdp_history.json", function(error, data2) {
     if (error) throw error;
 
     x.domain([parseTime2("1930"), d3.max(data2, function(d) { return parseTime2(d.date); })]);
